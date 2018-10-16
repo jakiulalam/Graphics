@@ -1,0 +1,505 @@
+
+
+#include <GL/gl.h>
+#include <GL/glut.h>
+#include<math.h>>
+# define PI           3.14159265358979323846
+
+
+GLfloat position = 1.0f;
+GLfloat speed = 0.1f;
+
+void update(int value) {
+
+   if(position <-1.0)
+        position = 1.0f;
+
+    position -= speed;
+
+	glutPostRedisplay();
+
+
+
+	glutTimerFunc(100, update, 0);
+}
+
+
+
+
+
+
+
+
+void init() {
+   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+}
+void display() {
+   glClear(GL_COLOR_BUFFER_BIT);
+   glLoadIdentity();
+
+   glBegin(GL_LINES);
+   glColor3f(1.0f,0.0f,1.0f);
+   glVertex2f(-1.0f,-0.03f);
+   glVertex2f(1.0f,-0.03f);
+   glEnd();
+
+
+
+glPushMatrix();
+glTranslatef(position,0.0f, 0.0f);
+//glTranslatef(0.0f,position, 0.0f);
+   glBegin(GL_QUADS);
+      glColor3f(1.0f, 0.0f, 0.0f);
+       glVertex2f(0.8f,  0.15f);
+      glVertex2f(0.8f, 0.0f);
+      glVertex2f( 1.0f, 0.0f);
+      glVertex2f( 1.0f,  0.15f);
+
+   glEnd();
+    glBegin(GL_QUADS);
+      glColor3f(1.0f, 1.0f, 1.0f);
+       glVertex2f(0.85f,  0.04f);
+      glVertex2f(0.86f, 0.04f);
+      glVertex2f( 0.86f, 0.06f);
+      glVertex2f( 0.85f,  0.06f);
+
+   glEnd();
+    glEnd();
+    glBegin(GL_QUADS);
+      glColor3f(1.0f, 1.0f, 1.0f);
+       glVertex2f(0.89f,  0.04f);
+      glVertex2f(0.92f, 0.04f);
+      glVertex2f( 0.92f, 0.06f);
+      glVertex2f( 0.89f,  0.06f);
+
+   glEnd();
+   glBegin(GL_QUADS);
+      glColor3f(1.0f, 1.0f, 1.0f);
+       glVertex2f(0.95f,  0.04f);
+      glVertex2f(0.98f, 0.04f);
+      glVertex2f( 0.98f, 0.06f);
+      glVertex2f( 0.95f,  0.06f);
+
+   glEnd();
+    glBegin(GL_QUADS);
+      glColor3f(1.0f, 1.0f, 1.0f);
+       glVertex2f(0.81f,  0.0f);
+      glVertex2f(0.83f, 0.0f);
+      glVertex2f( 0.83f, 0.1f);
+      glVertex2f( 0.81f,  0.1f);
+
+   glEnd();
+   glBegin(GL_QUADS);
+      glColor3f(0.5f, 1.0f, 0.0f);
+       glVertex2f(0.79f,  0.0f);
+      glVertex2f(0.79f, 0.15f);
+      glVertex2f( 0.7f, 0.15f);
+      glVertex2f( 0.7f,  0.0f);
+
+   glEnd();
+    glBegin(GL_QUADS);
+      glColor3f(1.0f, 1.0f, 1.0f);
+       glVertex2f(0.71f,  0.04f);
+      glVertex2f(0.74f, 0.04f);
+      glVertex2f( 0.74f, 0.06f);
+      glVertex2f( 0.71f,  0.06f);
+
+   glEnd();
+    glBegin(GL_QUADS);
+     glColor3f(0.0f, 1.0f, 0.0f);
+
+      glVertex2f( 0.7f, 0.1f);
+      glVertex2f(0.6f,  0.1f);
+       glVertex2f(0.6f, 0.0f);
+      glVertex2f( 0.7f,  0.0f);
+   glEnd();
+   glBegin(GL_QUADS);
+     glColor3f(01.0f, 1.0f, 01.0f);
+
+      glVertex2f( 0.79f, 0.1f);
+      glVertex2f(0.75f,  0.1f);
+       glVertex2f(0.75f, 0.0f);
+      glVertex2f( 0.79f,  0.0f);
+   glEnd();
+     glBegin(GL_LINES);
+   glColor3f(0.0f,0.0f,1.0f);
+   glVertex2f(0.8f,0.1f);
+   glVertex2f(1.0f,0.1f);
+   glEnd();
+
+
+   glBegin(GL_TRIANGLES);
+   glColor3f(0.0f, 1.0f, 0.50f);
+
+   glVertex2f(0.6f, 0.0f);
+   glVertex2f(0.6f, 0.1f);
+   glVertex2f(0.57f,0.05f);
+   glEnd();
+
+   glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
+	//glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer (background)
+	int i;
+
+	GLfloat x=.87f; GLfloat y=-0.01f; GLfloat radius =.02f;
+	int triangleAmount = 20; //# of triangles used to draw circle
+
+	//GLfloat radius = 0.8f; //radius
+	GLfloat twicePi = 2.0f * PI;
+
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex2f(x, y); // center of circle
+		for(i = 0; i <= triangleAmount;i++) {
+			glVertex2f(
+		            x + (radius * cos(i *  twicePi / triangleAmount)),
+			    y + (radius * sin(i * twicePi / triangleAmount))
+			);
+		}
+	glEnd();
+	 glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
+	//glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer (background)
+	//int i;
+
+	GLfloat x1=.97f; GLfloat y1=-0.01f; GLfloat radius1 =.02f;
+	int triangleAmount1 = 20; //# of triangles used to draw circle
+
+	//GLfloat radius = 0.8f; //radius
+	GLfloat twicePi1 = 2.0f * PI;
+
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex2f(x1, y1); // center of circle
+		for(i = 0; i <= triangleAmount;i++) {
+			glVertex2f(
+		            x1 + (radius1 * cos(i *  twicePi1 / triangleAmount1)),
+			    y1 + (radius1 * sin(i * twicePi1 / triangleAmount1))
+			);
+		}
+	glEnd();
+	 glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
+	//glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer (background)
+	//int i;
+
+	GLfloat x2=.75f; GLfloat y2=-0.01f; GLfloat radius2 =.02f;
+	int triangleAmount2 = 20; //# of triangles used to draw circle
+
+	//GLfloat radius = 0.8f; //radius
+	GLfloat twicePi2 = 2.0f * PI;
+
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex2f(x2, y2); // center of circle
+		for(i = 0; i <= triangleAmount;i++) {
+			glVertex2f(
+		            x2 + (radius2 * cos(i *  twicePi2 / triangleAmount2)),
+			    y2 + (radius2 * sin(i * twicePi2 / triangleAmount2))
+			);
+		}
+	glEnd();
+	GLfloat x3=.68f; GLfloat y3=-0.01f; GLfloat radius3 =.02f;
+	int triangleAmount3 = 20; //# of triangles used to draw circle
+
+	//GLfloat radius = 0.8f; //radius
+	GLfloat twicePi3 = 2.0f * PI;
+
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex2f(x3, y3); // center of circle
+		for(i = 0; i <= triangleAmount;i++) {
+			glVertex2f(
+		            x3 + (radius3 * cos(i *  twicePi2 / triangleAmount3)),
+			    y3 + (radius3 * sin(i * twicePi2 / triangleAmount3))
+			);
+		}
+	glEnd();
+	GLfloat x4=.62f; GLfloat y4=-0.01f; GLfloat radius4 =.02f;
+	int triangleAmount4 = 20; //# of triangles used to draw circle
+
+	//GLfloat radius = 0.8f; //radius
+	GLfloat twicePi4 = 2.0f * PI;
+
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex2f(x4, y4); // center of circle
+		for(i = 0; i <= triangleAmount;i++) {
+			glVertex2f(
+		            x4 + (radius4 * cos(i *  twicePi4 / triangleAmount4)),
+			    y4 + (radius4 * sin(i * twicePi4 / triangleAmount4))
+			);
+		}
+	glEnd();
+
+	glFlush();  // Render now
+
+
+
+glPopMatrix();
+
+
+
+   glFlush();
+}
+
+
+
+int main(int argc, char** argv) {
+   glutInit(&argc, argv);
+   glutInitWindowSize(320, 320);
+   glutInitWindowPosition(50, 50);
+   glutCreateWindow("Basic Animation");
+   glutDisplayFunc(display);
+   init();
+
+   glutTimerFunc(100, update, 0);
+
+   glutMainLoop();
+   return 0;
+}
+====================================
+
+
+#include <GL/gl.h>
+#include <GL/glut.h>
+#include<math.h>>
+# define PI           3.14159265358979323846
+
+
+GLfloat position = 1.0f;
+GLfloat speed = 0.1f;
+
+void update(int value) {
+
+   if(position <-1.0)
+        position = 1.0f;
+
+    position -= speed;
+
+	glutPostRedisplay();
+
+
+
+	glutTimerFunc(100, update, 0);
+}
+
+
+
+
+
+
+
+
+void init() {
+   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+}
+void display() {
+   glClear(GL_COLOR_BUFFER_BIT);
+   glLoadIdentity();
+
+   glBegin(GL_LINES);
+   glColor3f(1.0f,0.0f,1.0f);
+   glVertex2f(-1.0f,-0.03f);
+   glVertex2f(1.0f,-0.03f);
+   glEnd();
+
+
+
+glPushMatrix();
+glTranslatef(position,0.0f, 0.0f);
+//glTranslatef(0.0f,position, 0.0f);
+   glBegin(GL_QUADS);
+      glColor3f(1.0f, 0.0f, 0.0f);
+       glVertex2f(0.8f,  0.15f);
+      glVertex2f(0.8f, 0.0f);
+      glVertex2f( 1.0f, 0.0f);
+      glVertex2f( 1.0f,  0.15f);
+
+   glEnd();
+    glBegin(GL_QUADS);
+      glColor3f(1.0f, 1.0f, 1.0f);
+       glVertex2f(0.85f,  0.04f);
+      glVertex2f(0.86f, 0.04f);
+      glVertex2f( 0.86f, 0.06f);
+      glVertex2f( 0.85f,  0.06f);
+
+   glEnd();
+    glEnd();
+    glBegin(GL_QUADS);
+      glColor3f(1.0f, 1.0f, 1.0f);
+       glVertex2f(0.89f,  0.04f);
+      glVertex2f(0.92f, 0.04f);
+      glVertex2f( 0.92f, 0.06f);
+      glVertex2f( 0.89f,  0.06f);
+
+   glEnd();
+   glBegin(GL_QUADS);
+      glColor3f(1.0f, 1.0f, 1.0f);
+       glVertex2f(0.95f,  0.04f);
+      glVertex2f(0.98f, 0.04f);
+      glVertex2f( 0.98f, 0.06f);
+      glVertex2f( 0.95f,  0.06f);
+
+   glEnd();
+    glBegin(GL_QUADS);
+      glColor3f(1.0f, 1.0f, 1.0f);
+       glVertex2f(0.81f,  0.0f);
+      glVertex2f(0.83f, 0.0f);
+      glVertex2f( 0.83f, 0.1f);
+      glVertex2f( 0.81f,  0.1f);
+
+   glEnd();
+   glBegin(GL_QUADS);
+      glColor3f(0.5f, 1.0f, 0.0f);
+       glVertex2f(0.79f,  0.0f);
+      glVertex2f(0.79f, 0.15f);
+      glVertex2f( 0.7f, 0.15f);
+      glVertex2f( 0.7f,  0.0f);
+
+   glEnd();
+    glBegin(GL_QUADS);
+      glColor3f(1.0f, 1.0f, 1.0f);
+       glVertex2f(0.71f,  0.04f);
+      glVertex2f(0.74f, 0.04f);
+      glVertex2f( 0.74f, 0.06f);
+      glVertex2f( 0.71f,  0.06f);
+
+   glEnd();
+    glBegin(GL_QUADS);
+     glColor3f(0.0f, 1.0f, 0.0f);
+
+      glVertex2f( 0.7f, 0.1f);
+      glVertex2f(0.6f,  0.1f);
+       glVertex2f(0.6f, 0.0f);
+      glVertex2f( 0.7f,  0.0f);
+   glEnd();
+   glBegin(GL_QUADS);
+     glColor3f(01.0f, 1.0f, 01.0f);
+
+      glVertex2f( 0.79f, 0.1f);
+      glVertex2f(0.75f,  0.1f);
+       glVertex2f(0.75f, 0.0f);
+      glVertex2f( 0.79f,  0.0f);
+   glEnd();
+     glBegin(GL_LINES);
+   glColor3f(0.0f,0.0f,1.0f);
+   glVertex2f(0.8f,0.1f);
+   glVertex2f(1.0f,0.1f);
+   glEnd();
+
+
+   glBegin(GL_TRIANGLES);
+   glColor3f(0.0f, 1.0f, 0.50f);
+
+   glVertex2f(0.6f, 0.0f);
+   glVertex2f(0.6f, 0.1f);
+   glVertex2f(0.57f,0.05f);
+   glEnd();
+
+   glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
+	//glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer (background)
+	int i;
+
+	GLfloat x=.87f; GLfloat y=-0.01f; GLfloat radius =.02f;
+	int triangleAmount = 20; //# of triangles used to draw circle
+
+	//GLfloat radius = 0.8f; //radius
+	GLfloat twicePi = 2.0f * PI;
+
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex2f(x, y); // center of circle
+		for(i = 0; i <= triangleAmount;i++) {
+			glVertex2f(
+		            x + (radius * cos(i *  twicePi / triangleAmount)),
+			    y + (radius * sin(i * twicePi / triangleAmount))
+			);
+		}
+	glEnd();
+	 glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
+	//glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer (background)
+	//int i;
+
+	GLfloat x1=.97f; GLfloat y1=-0.01f; GLfloat radius1 =.02f;
+	int triangleAmount1 = 20; //# of triangles used to draw circle
+
+	//GLfloat radius = 0.8f; //radius
+	GLfloat twicePi1 = 2.0f * PI;
+
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex2f(x1, y1); // center of circle
+		for(i = 0; i <= triangleAmount;i++) {
+			glVertex2f(
+		            x1 + (radius1 * cos(i *  twicePi1 / triangleAmount1)),
+			    y1 + (radius1 * sin(i * twicePi1 / triangleAmount1))
+			);
+		}
+	glEnd();
+	 glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Set background color to black and opaque
+	//glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer (background)
+	//int i;
+
+	GLfloat x2=.75f; GLfloat y2=-0.01f; GLfloat radius2 =.02f;
+	int triangleAmount2 = 20; //# of triangles used to draw circle
+
+	//GLfloat radius = 0.8f; //radius
+	GLfloat twicePi2 = 2.0f * PI;
+
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex2f(x2, y2); // center of circle
+		for(i = 0; i <= triangleAmount;i++) {
+			glVertex2f(
+		            x2 + (radius2 * cos(i *  twicePi2 / triangleAmount2)),
+			    y2 + (radius2 * sin(i * twicePi2 / triangleAmount2))
+			);
+		}
+	glEnd();
+	GLfloat x3=.68f; GLfloat y3=-0.01f; GLfloat radius3 =.02f;
+	int triangleAmount3 = 20; //# of triangles used to draw circle
+
+	//GLfloat radius = 0.8f; //radius
+	GLfloat twicePi3 = 2.0f * PI;
+
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex2f(x3, y3); // center of circle
+		for(i = 0; i <= triangleAmount;i++) {
+			glVertex2f(
+		            x3 + (radius3 * cos(i *  twicePi2 / triangleAmount3)),
+			    y3 + (radius3 * sin(i * twicePi2 / triangleAmount3))
+			);
+		}
+	glEnd();
+	GLfloat x4=.62f; GLfloat y4=-0.01f; GLfloat radius4 =.02f;
+	int triangleAmount4 = 20; //# of triangles used to draw circle
+
+	//GLfloat radius = 0.8f; //radius
+	GLfloat twicePi4 = 2.0f * PI;
+
+	glBegin(GL_TRIANGLE_FAN);
+		glVertex2f(x4, y4); // center of circle
+		for(i = 0; i <= triangleAmount;i++) {
+			glVertex2f(
+		            x4 + (radius4 * cos(i *  twicePi4 / triangleAmount4)),
+			    y4 + (radius4 * sin(i * twicePi4 / triangleAmount4))
+			);
+		}
+	glEnd();
+
+	glFlush();  // Render now
+
+
+
+glPopMatrix();
+
+
+
+   glFlush();
+}
+
+
+
+int main(int argc, char** argv) {
+   glutInit(&argc, argv);
+   glutInitWindowSize(320, 320);
+   glutInitWindowPosition(50, 50);
+   glutCreateWindow("Basic Animation");
+   glutDisplayFunc(display);
+   init();
+
+   glutTimerFunc(100, update, 0);
+
+   glutMainLoop();
+   return 0;
+}
